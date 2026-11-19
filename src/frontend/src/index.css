@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.75rem;
+
+    /* Background: yellow-green #C6F4D6 ≈ oklch(0.93 0.07 152) */
+    --background: 0.93 0.07 152;
+    /* Foreground: orange text */
+    --foreground: 0.55 0.19 44;
+    /* Card: slightly lighter yellow-green so cards stand out */
+    --card: 0.96 0.05 152;
+    --card-foreground: 0.55 0.19 44;
+    --popover: 0.96 0.05 152;
+    --popover-foreground: 0.55 0.19 44;
+
+    /* Primary action: deep orange */
+    --primary: 0.6 0.21 44;
+    --primary-foreground: 0.98 0.01 152;
+
+    /* Secondary: warm amber */
+    --secondary: 0.72 0.13 60;
+    --secondary-foreground: 0.15 0 0;
+    /* Muted: washed-out yellow-green */
+    --muted: 0.88 0.05 152;
+    --muted-foreground: 0.62 0.12 44;
+
+    /* Accent: orange */
+    --accent: 0.6 0.21 44;
+    --accent-foreground: 0.98 0.01 152;
+
+    --destructive: 0.56 0.22 22;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.82 0.06 152;
+    --input: 0.89 0.05 152;
+    --ring: 0.6 0.21 44;
+
+    --chart-1: 0.6 0.21 44;
+    --chart-2: 0.72 0.13 60;
+    --chart-3: 0.75 0.14 140;
+    --chart-4: 0.65 0.18 30;
+    --chart-5: 0.7 0.12 100;
+
+    /* Sidebar: slightly deeper yellow-green */
+    --sidebar: 0.89 0.08 152;
+    --sidebar-foreground: 0.55 0.19 44;
+    --sidebar-primary: 0.6 0.21 44;
+    --sidebar-primary-foreground: 0.98 0.01 152;
+    --sidebar-accent: 0.72 0.13 60;
+    --sidebar-accent-foreground: 0.15 0 0;
+    --sidebar-border: 0.82 0.06 152;
+    --sidebar-ring: 0.6 0.21 44;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.6 0.21 44) 0%,
+      oklch(0.68 0.18 55) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      oklch(0.88 0.09 152) 0%,
+      oklch(0.93 0.07 140) 100%
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode: deep forest green background, bright orange text */
+    --background: 0.2 0.05 152;
+    --foreground: 0.88 0.14 50;
+    --card: 0.26 0.06 152;
+    --card-foreground: 0.88 0.14 50;
+    --popover: 0.28 0.06 152;
+    --popover-foreground: 0.88 0.14 50;
+
+    --primary: 0.78 0.18 44;
+    --primary-foreground: 0.15 0.04 152;
+
+    --secondary: 0.72 0.12 60;
+    --secondary-foreground: 0.12 0 0;
+    --muted: 0.3 0.05 152;
+    --muted-foreground: 0.65 0.1 50;
+
+    --accent: 0.78 0.18 44;
+    --accent-foreground: 0.15 0.04 152;
+
+    --destructive: 0.65 0.2 18;
+    --destructive-foreground: 0.12 0 0;
+
+    --border: 0.35 0.05 152;
+    --input: 0.28 0.05 152;
+    --ring: 0.78 0.18 44;
+
+    --chart-1: 0.78 0.18 44;
+    --chart-2: 0.72 0.12 60;
+    --chart-3: 0.75 0.12 140;
+    --chart-4: 0.7 0.16 30;
+    --chart-5: 0.68 0.1 100;
+
+    --sidebar: 0.25 0.06 152;
+    --sidebar-foreground: 0.88 0.14 50;
+    --sidebar-primary: 0.78 0.18 44;
+    --sidebar-primary-foreground: 0.15 0.04 152;
+    --sidebar-accent: 0.72 0.12 60;
+    --sidebar-accent-foreground: 0.12 0 0;
+    --sidebar-border: 0.35 0.05 152;
+    --sidebar-ring: 0.78 0.18 44;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.78 0.18 44) 0%,
+      oklch(0.72 0.16 55) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      oklch(0.3 0.08 152) 0%,
+      oklch(0.35 0.07 140) 100%
+    );
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .card-elevated {
+    @apply rounded-lg border border-border bg-card shadow-md transition-smooth hover:shadow-lg;
+  }
+
+  .shadow-subtle {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px
+      rgba(0, 0, 0, 0.04);
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-smooth hover:opacity-90 active:scale-95;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 font-medium text-secondary-foreground transition-smooth hover:opacity-90 active:scale-95;
+  }
+
+  .button-ghost {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium text-foreground transition-smooth hover:bg-muted active:scale-95;
+  }
+
+  .input-base {
+    @apply rounded-md border border-input bg-input px-3 py-2 font-body text-foreground transition-smooth placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm font-medium text-muted-foreground;
+  }
+}

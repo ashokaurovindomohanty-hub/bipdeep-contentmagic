@@ -1,0 +1,113 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = 
+ record {
+   email: text;
+   name: text;
+ };
+type UserId = principal;
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Tone = 
+ variant {
+   casual;
+   humorous;
+   inspirational;
+   professional;
+ };
+type Timestamp = int;
+type TemplateType = 
+ variant {
+   callToAction;
+   productPost;
+   quote;
+   storyHook;
+ };
+type Platform = 
+ variant {
+   instagram;
+   linkedin;
+   tiktok;
+   twitter;
+ };
+type GenerateContentRequest = 
+ record {
+   platform: Platform;
+   prompt: text;
+   templateType: TemplateType;
+   tone: Tone;
+ };
+type DraftUpdateInput = 
+ record {
+   content: text;
+   platform: Platform;
+   templateType: TemplateType;
+   title: text;
+   tone: Tone;
+ };
+type DraftInput = 
+ record {
+   content: text;
+   platform: Platform;
+   templateType: TemplateType;
+   title: text;
+   tone: Tone;
+ };
+type Draft = 
+ record {
+   content: text;
+   createdAt: Timestamp;
+   id: nat;
+   owner: UserId;
+   platform: Platform;
+   templateType: TemplateType;
+   title: text;
+   tone: Tone;
+   updatedAt: Timestamp;
+ };
+type DashboardStats = 
+ record {
+   lastGeneratedAt: opt Timestamp;
+   totalDrafts: nat;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createDraft: (input: DraftInput) -> (Draft);
+  deleteDraft: (id: nat) -> (bool);
+  generateContent: (request: GenerateContentRequest) -> (text);
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getDashboardStats: () -> (DashboardStats) query;
+  getDraft: (id: nat) -> (opt Draft) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  isCallerAdmin: () -> (bool) query;
+  listDrafts: () -> (vec Draft) query;
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  updateDraft: (id: nat, input: DraftUpdateInput) -> (bool);
+}

@@ -1,0 +1,57 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Draft__203011734 =
+  {
+    content : Text;
+    createdAt : Timestamp__301639476;
+    id : Nat;
+    owner : UserId__158757552;
+    platform : Platform__1020897877;
+    templateType : TemplateType__140946986;
+    title : Text;
+    tone : Tone__903694114;
+    updatedAt : Timestamp__301639476
+  };
+type Int__270357528 = Int__616954475;
+type Int__616954475 = Int;
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Platform__1020897877 = {#instagram; #linkedin; #tiktok; #twitter};
+type TemplateType__140946986 =
+  {#callToAction; #productPost; #quote; #storyHook};
+type Time__796480547 = Int__270357528;
+type Time__900049286 = Time__796480547;
+type Timestamp__301639476 = Time__900049286;
+type Tone__903694114 = {#casual; #humorous; #inspirational; #professional};
+type UserId__158757552 = Principal;
+type UserProfile__144547731 = {email : Text; name : Text};
+type UserRole__1054455867 = {#admin; #guest; #user};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable drafts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Draft__203011734]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextDraftId : Nat;
+  stable userProfiles :
+    {
+      var root : Node__46230540<Principal, UserProfile__144547731>;
+      var size : Nat__490723111
+    }
+};

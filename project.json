@@ -1,0 +1,25 @@
+{
+  "overview": "BipDeep ContentMagic is a productivity app for social media creators. Generate AI-powered text content — posts, captions, and stories — for any platform. Save drafts, pick templates, and control tone to match your brand voice. Tagline: Create. Enchant. Repeat.",
+  "features": [
+    "AI text generation for social media posts, captions, and stories",
+    "Platform selector: Instagram, Twitter, LinkedIn, TikTok",
+    "Tone selector: professional, casual, humorous, inspirational",
+    "Template library: Product Post, Story Hook, Quote, Call-to-Action",
+    "Draft management: save, edit, and delete your generated content",
+    "User accounts with secure sign-in via Internet Identity",
+    "Responsive design for web, tablet, and mobile",
+    "Dashboard with quick stats on your content activity"
+  ],
+  "category": "productivity",
+  "tags": [
+    "social-media",
+    "ai-content",
+    "content-creation",
+    "productivity",
+    "text-generation",
+    "templates",
+    "captions",
+    "posts"
+  ],
+  "last_updated": "2026-04-16T23:13:49.294Z"
+}
